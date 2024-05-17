@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>Registrar Usuarios</title>
+  </head>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+  </style>
+  <body>
+    <div class="container">
+      <h1>Registrar Usuarios</h1>
+      <button id="register-button">Registrar Nuevos Usuarios</button>
+      <button id="usuarios-button">Ver Todos los Usuarios</button>
+    </div>
+    <script>
+        document.getElementById('register-button').addEventListener('click', async () => { 
+    try { 
+      const response = await fetch('/register', { method: 'POST'}); 
+      const data = await response.json(); 
+      alert(`Registrado usuario: ${data.name}`);
+    } 
+    catch (error) { 
+      console.error('Error registering users:', error); 
+    } 
+  });
+  
+  document.getElementById('usuarios-button').addEventListener('click', async () => { 
+    try { 
+      window.location.href = '/users'; // Redirige al usuario a la ruta '/users'
+    } 
+    catch (error) { 
+      console.error('Error fetching users:', error); 
+    } 
+  });
+  
+    </script>
+  </body>
+</html>
